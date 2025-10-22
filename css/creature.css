@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+@import './variables.css';
+@import './utilities.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    --creature-accent: var(--accent);
+    --creature-background: linear-gradient(160deg, var(--primary-alt), var(--primary));
+    --creature-overlay: rgba(2, 18, 34, 0.7);
+    font-family: var(--body);
+    color: var(--pure);
+    min-height: 100vh;
+    background: var(--creature-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 5%;
+    position: relative;
+}
+
+.backdrop-glow {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 20%, rgba(56, 182, 255, 0.15), transparent 45%),
+        radial-gradient(circle at 85% 78%, rgba(13, 92, 99, 0.22), transparent 50%);
+    pointer-events: none;
+    z-index: -2;
+}
+
+.creature-card {
+    width: min(1100px, 100%);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 48px;
+    align-items: center;
+    background: var(--creature-overlay);
+    border-radius: 40px;
+    padding: 48px;
+    border: 1px solid rgba(245, 251, 255, 0.08);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 36px 90px rgba(1, 10, 20, 0.58);
+    position: relative;
+}
+
+.creature-figure {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    border-radius: 28px;
+    background: rgba(3, 29, 58, 0.5);
+    border: 1px solid rgba(245, 251, 255, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(56, 182, 255, 0.18);
+}
+
+.creature-figure img {
+    width: min(320px, 85%);
+    filter: drop-shadow(0 28px 50px rgba(1, 10, 20, 0.6));
+    animation: drift 12s ease-in-out infinite;
+}
+
+@keyframes drift {
+    0%,
+    100% {
+        transform: translateY(0) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-16px) rotate(-3deg);
+    }
+}
+
+.creature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.creature-pill {
+    align-self: flex-start;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: rgba(56, 182, 255, 0.15);
+    border: 1px solid rgba(56, 182, 255, 0.35);
+    font-family: var(--heading);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: var(--creature-accent);
+}
+
+.creature-text h2 {
+    font-family: var(--heading);
+    font-weight: 600;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.15;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--creature-accent);
+}
+
+.creature-text h3 {
+    font-family: var(--heading);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.9rem;
+    color: var(--mild);
+}
+
+.creature-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--gray-soft);
+}
+
+.creature-text ul {
+    list-style: none;
+    display: grid;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.creature-text li {
+    padding-left: 24px;
+    position: relative;
+    color: var(--pure);
+    line-height: 1.6;
+}
+
+.creature-text li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--creature-accent);
+    box-shadow: 0 0 14px rgba(56, 182, 255, 0.6);
+}
+
+.creature-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.creature-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(245, 251, 255, 0.18);
+    color: var(--pure);
+    font-family: var(--heading);
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.creature-links a:hover {
+    transform: translateY(-3px);
+    background: rgba(56, 182, 255, 0.2);
+    box-shadow: 0 18px 40px rgba(56, 182, 255, 0.28);
+}
+
+.back-link {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-family: var(--heading);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: color var(--transition), transform var(--transition);
+}
+
+.back-link:hover {
+    color: var(--creature-accent);
+    transform: translateX(4px);
+}
+
+body.creature-anglerfish {
+    --creature-accent: #f6b04c;
+    --creature-background: linear-gradient(160deg, #2c1734, #0d1d36 55%, #04101f);
+}
+
+body.creature-clownfish {
+    --creature-accent: #ff934f;
+    --creature-background: linear-gradient(160deg, #3a1e10, #0f1e2d 55%, #02101f);
+}
+
+body.creature-eels {
+    --creature-accent: #77ffd6;
+    --creature-background: linear-gradient(160deg, #103532, #04202f 60%, #010b17);
+}
+
+body.creature-flounder {
+    --creature-accent: #ffe07a;
+    --creature-background: linear-gradient(160deg, #31240a, #112139 60%, #010b17);
+}
+
+body.creature-mackerel {
+    --creature-accent: #6be7ff;
+    --creature-background: linear-gradient(160deg, #143a4b, #062033 60%, #010b17);
+}
+
+body.creature-salmon {
+    --creature-accent: #ff7b74;
+    --creature-background: linear-gradient(160deg, #401922, #101f33 60%, #010b17);
+}
+
+body.creature-shark {
+    --creature-accent: #9de2ff;
+    --creature-background: linear-gradient(160deg, #1c2c3a, #04192b 60%, #010b17);
+}
+
+body.creature-tuna {
+    --creature-accent: #4cc9ff;
+    --creature-background: linear-gradient(160deg, #152a46, #031a2f 60%, #010b17);
+}
+
+body.creature-whale {
+    --creature-accent: #a6b7ff;
+    --creature-background: linear-gradient(160deg, #1f2354, #061638 60%, #010b17);
+}
+
+@media (max-width: 800px) {
+    body {
+        padding: 60px 6%;
+    }
+
+    .creature-card {
+        padding: 36px 28px;
+        gap: 30px;
+    }
+
+    .back-link {
+        position: static;
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 520px) {
+    .creature-card {
+        padding: 28px 24px;
+    }
+
+    .creature-pill {
+        align-self: stretch;
+        text-align: center;
+    }
+
+    .creature-links {
+        justify-content: center;
+    }
+}
