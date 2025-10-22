@@ -1,0 +1,15 @@
+:root {
+    --primary: #031d3a;
+    --primary-alt: #052a52;
+    --secondary: #0d5c63;
+    --accent: #38b6ff;
+    --accent-soft: rgba(56, 182, 255, 0.15);
+    --pure: #f5fbff;
+    --dark: #021222;
+    --gray: #1b3047;
+    --gray-soft: rgba(245, 251, 255, 0.65);
+    --mild: #9cb9d5;
+    --heading: 'Montserrat', sans-serif;
+    --body: 'Source Sans Pro', sans-serif;
+    --transition: 250ms ease;
+}
